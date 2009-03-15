@@ -33,10 +33,9 @@ import org.eclipse.jface.text.templates.TemplateVariableResolver; // packageimpo
 
 
 import java.lang.all;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-
 
 
 /**
