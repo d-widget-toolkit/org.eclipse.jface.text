@@ -85,7 +85,6 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
-import tango.io.Stdout;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
@@ -1205,7 +1204,7 @@ public class AnnotationPainter : IPainter, PaintListener, IAnnotationModelListen
         } else {
             if (DEBUG && event !is null && event.isWorldChange()) {
                 System.out_.println("AP: WORLD CHANGED, stack trace follows:"); //$NON-NLS-1$
-                ExceptionPrintStackTrace( new Exception(""), Stdout );
+                ExceptionPrintStackTrace( new Exception(""), & getDwtLogger().info );
             }
 
             // XXX: posting here is a problem for annotations that are being
