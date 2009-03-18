@@ -22,7 +22,6 @@ import org.eclipse.jface.internal.text.revisions.RevisionSelectionProvider; // p
 
 import java.lang.all;
 import java.util.Set;
-import tango.text.convert.Format;
 
 import org.eclipse.jface.text.source.ILineRange;
 

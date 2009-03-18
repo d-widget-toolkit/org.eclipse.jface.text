@@ -85,7 +85,6 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
-import tango.text.convert.Format;
 import tango.io.Stdout;
 
 import org.eclipse.swt.SWT;

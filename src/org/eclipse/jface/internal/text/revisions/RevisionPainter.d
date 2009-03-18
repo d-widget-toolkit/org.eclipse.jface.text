@@ -30,7 +30,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
-import tango.text.convert.Format;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;

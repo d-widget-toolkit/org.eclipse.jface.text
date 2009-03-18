@@ -24,7 +24,6 @@ import java.lang.all;
 import java.util.ListIterator;
 import java.util.List;
 import java.util.LinkedList;
-import tango.text.convert.Format;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.text.revisions.Revision;

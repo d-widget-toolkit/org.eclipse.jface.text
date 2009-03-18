@@ -21,7 +21,6 @@ import org.eclipse.jface.internal.text.revisions.RevisionPainter; // packageimpo
 import org.eclipse.jface.internal.text.revisions.RevisionSelectionProvider; // packageimport
 
 import java.lang.all;
-import tango.text.convert.Format;
 
 import org.eclipse.core.runtime.Assert;
 

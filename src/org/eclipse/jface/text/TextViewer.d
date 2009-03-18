@@ -162,7 +162,6 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.regex.PatternSyntaxException;
-import tango.text.convert.Format;
 import java.lang.JThread;
 
 import org.eclipse.swt.SWT;

@@ -21,7 +21,6 @@ import org.eclipse.jface.text.revisions.Revision; // packageimport
 
 
 import java.lang.all;
-import tango.text.convert.Format;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.text.source.ILineRange;

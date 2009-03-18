@@ -20,7 +20,6 @@ import org.eclipse.jface.internal.text.DelayedInputChangeListener; // packageimp
 
 import java.lang.all;
 import java.util.Set;
-import tango.text.convert.Format;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlEvent;
