@@ -120,10 +120,8 @@ public class LineChangeHover : IAnnotationHover, IAnnotationHoverExtension, IInf
             StringBuffer sb= new StringBuffer(content);
             final String tabReplacement= getTabReplacement();
             for (int pos= 0; pos < sb.length(); pos++) {
-                if (sb.slice()[pos] is '\t'){
-                    sb.select( pos, pos + 1);
-                    sb.replace(tabReplacement);
-                }
+                if (sb.charAt(pos) is '\t')
+                    sb.replace(pos, pos + 1, tabReplacement);
             }
             return sb.toString();
         }

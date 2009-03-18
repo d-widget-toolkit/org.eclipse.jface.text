@@ -23,8 +23,9 @@ import org.eclipse.jface.internal.text.html.HTMLMessages; // packageimport
 
 
 import java.lang.all;
+import java.io.Reader;
 import java.util.Set;
-import org.eclipse.dwtxhelper.URL;
+import java.net.URL;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
@@ -137,8 +138,7 @@ public class HTMLPrinter {
 
         appendColors(pageProlog, fgRGB, bgRGB);
 
-        buffer.select(position,0);
-        buffer.replace(pageProlog.toString());
+        buffer.insert(position,  pageProlog.toString());
     }
 
     private static void appendColors(StringBuffer pageProlog, RGB fgRGB, RGB bgRGB) {
@@ -178,18 +178,15 @@ public class HTMLPrinter {
         // a) within existing body tag with trailing space
         int index= buffer.slice().indexOf("<body "); //$NON-NLS-1$
         if (index !is -1) {
-            buffer.select(index+5, 0);
-            buffer.replace(styleBuf);
+            buffer.insert(index+5, styleBuf);
             return;
         }
 
         // b) within existing body tag without attributes
         index= buffer.slice().indexOf("<body>"); //$NON-NLS-1$
         if (index !is -1) {
-            buffer.select(index+5, 0);
-            buffer.replace( " " );
-            buffer.select(index+6, 0);
-            buffer.replace(styleBuf);
+            buffer.insert(index+5, " " );
+            buffer.insert(index+6, styleBuf);
             return;
         }
     }
@@ -210,7 +207,7 @@ public class HTMLPrinter {
         buffer.append("<head>"); //$NON-NLS-1$
 
         buffer.append("<LINK REL=\"stylesheet\" HREF= \""); //$NON-NLS-1$
-        buffer.append(styleSheetURL.toString());
+        buffer.append(styleSheetURL);
         buffer.append("\" CHARSET=\"ISO-8859-1\" TYPE=\"text/css\">"); //$NON-NLS-1$
 
         buffer.append("</head>"); //$NON-NLS-1$
@@ -220,8 +217,7 @@ public class HTMLPrinter {
         StringBuffer pageProlog= new StringBuffer(60);
         pageProlog.append("<html>"); //$NON-NLS-1$
         appendColors(pageProlog, FG_COLOR_RGB, BG_COLOR_RGB);
-        buffer.select(position, 0);
-        buffer.replace(pageProlog.toString());
+        buffer.insert(position, pageProlog.toString());
     }
 
     public static void insertPageProlog(StringBuffer buffer, int position, URL styleSheetURL) {
@@ -229,8 +225,7 @@ public class HTMLPrinter {
         pageProlog.append("<html>"); //$NON-NLS-1$
         appendStyleSheetURL(pageProlog, styleSheetURL);
         appendColors(pageProlog, FG_COLOR_RGB, BG_COLOR_RGB);
-        buffer.select(position, 0);
-        buffer.replace(pageProlog.toString());
+        buffer.insert(position, pageProlog.toString());
     }
 
     public static void insertPageProlog(StringBuffer buffer, int position, String styleSheet) {

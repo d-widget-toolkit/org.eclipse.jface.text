@@ -22,11 +22,12 @@ import org.eclipse.jface.internal.text.html.BrowserInformationControlInput; // p
 import org.eclipse.jface.internal.text.html.HTMLMessages; // packageimport
 
 import java.lang.all;
+import java.io.Reader;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
-import org.eclipse.dwtxhelper.PushbackReader;
+import java.io.PushbackReader;
 static import tango.text.convert.Utf;
 
 import org.eclipse.swt.SWT;
@@ -351,8 +352,7 @@ public class HTML2TextReader : SubstitutionTextReader {
         if (ch is ';')
             return entity2Text(buf.toString());
 
-        buf.select(0, 0);
-        buf.prepend("&");
+        buf.insert(0, "&");
         if (ch !is -1)
             buf.append(dcharToString(cast(dchar) ch));
         return buf.toString();

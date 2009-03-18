@@ -435,7 +435,7 @@ public class WhitespaceCharacterPainter : IPainter, PaintListener {
                     }
                     draw(gc, widgetOffset, visibleChar.toString(), fg);
                 }
-                visibleChar.truncate(0);
+                visibleChar.setLength(0);
             }
         }
     }

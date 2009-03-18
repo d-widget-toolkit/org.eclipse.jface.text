@@ -24,9 +24,10 @@ import org.eclipse.jface.internal.text.link.contentassist.AdditionalInfoControll
 
 
 import java.lang.all;
+import java.io.Reader;
 import java.util.Set;
-import org.eclipse.dwtxhelper.BufferedReader;
-import org.eclipse.dwtxhelper.mangoicu.UBreakIterator;
+import java.io.BufferedReader;
+import java.mangoicu.UBreakIterator;
 
 import org.eclipse.swt.graphics.GC;
 

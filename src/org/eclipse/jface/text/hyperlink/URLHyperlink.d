@@ -27,7 +27,7 @@ import org.eclipse.jface.text.hyperlink.IHyperlink; // packageimport
 
 
 import java.lang.all;
-import org.eclipse.dwtxhelper.MessageFormat;
+import java.text.MessageFormat;
 
 import org.eclipse.swt.program.Program;
 import org.eclipse.core.runtime.Assert;

@@ -1803,14 +1803,14 @@ class CompletionProposalPopup : IContentAssistListener {
         // find common prefix
         int min= Math.min(buffer.length(), sequence.length());
         for (int c= 0; c < min; c++) {
-            if (sequence.charAt(c) !is buffer.slice()[c]) {
-                buffer.truncate(c);
+            if (sequence.charAt(c) !is buffer.charAt(c)) {
+                buffer.delete_(c, buffer.length());
                 return;
             }
         }
 
         // all equal up to minimum
-        buffer.truncate(min);
+        buffer.delete_(min, buffer.length());
     }
 
     /**

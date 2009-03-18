@@ -23,6 +23,7 @@ import org.eclipse.jface.internal.text.html.HTMLMessages; // packageimport
 
 
 import java.lang.all;
+import java.io.Reader;
 
 /**
  * <p>

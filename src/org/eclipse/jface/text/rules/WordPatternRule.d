@@ -102,7 +102,7 @@ public class WordPatternRule : SingleLineRule {
      * @return <code>true</code> if the word ends on the given end sequence
      */
     protected bool endSequenceDetected(ICharacterScanner scanner) {
-        fBuffer.truncate(0);
+        fBuffer.setLength(0);
         int c= scanner.read();
         while (fDetector.isWordPart(cast(dchar) c)) {
             fBuffer.append(cast(char) c);
@@ -112,7 +112,7 @@ public class WordPatternRule : SingleLineRule {
 
         if (fBuffer.length() >= fEndSequence.length) {
             for (int i=fEndSequence.length - 1, j= fBuffer.length() - 1; i >= 0; i--, j--) {
-                if (fEndSequence[i] !is fBuffer.slice()[j]) {
+                if (fEndSequence[i] !is fBuffer.charAt(j)) {
                     unreadBuffer(scanner);
                     return false;
                 }
@@ -132,8 +132,7 @@ public class WordPatternRule : SingleLineRule {
      * @param scanner the scanner to be used
      */
     protected void unreadBuffer(ICharacterScanner scanner) {
-        fBuffer.select(0, 0 );
-        fBuffer.replace(fStartSequence);
+        fBuffer.insert(0, fStartSequence);
         for (int i= fBuffer.length() - 1; i > 0; i--)
             scanner.unread();
     }

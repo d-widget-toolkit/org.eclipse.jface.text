@@ -161,7 +161,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
-import org.eclipse.dwtxhelper.regex;
+import java.util.regex.PatternSyntaxException;
 import tango.text.convert.Format;
 import java.lang.JThread;
 

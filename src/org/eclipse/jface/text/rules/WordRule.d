@@ -168,7 +168,7 @@ public class WordRule : IRule {
         if (c !is ICharacterScanner.EOF && fDetector.isWordStart(cast(dchar) c)) {
             if (fColumn is UNDEFINED || (fColumn is scanner.getColumn() - 1)) {
 
-                fBuffer.truncate(0);
+                fBuffer.setLength(0);
                 do {
                     fBuffer.append(cast(char) c);
                     c= scanner.read();

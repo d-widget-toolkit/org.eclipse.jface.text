@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
-import org.eclipse.dwtxhelper.Date;
+import java.util.Date;
 
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.jface.internal.text.revisions.ChangeRegion;

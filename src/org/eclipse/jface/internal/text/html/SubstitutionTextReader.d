@@ -22,6 +22,7 @@ import org.eclipse.jface.internal.text.html.BrowserInformationControlInput; // p
 import org.eclipse.jface.internal.text.html.HTMLMessages; // packageimport
 
 import java.lang.all;
+import java.io.Reader;
 import java.util.Set;
 import tango.core.Exception;
 
@@ -172,8 +173,7 @@ public abstract class SubstitutionTextReader : SingleCharReader {
                 if (s is null)
                     break;
                 if (s.length() > 0){
-                    fBuffer.select(0, 0);
-                    fBuffer.replace(s);
+                    fBuffer.insert(0, s);
                 }
                 c= nextChar();
             }

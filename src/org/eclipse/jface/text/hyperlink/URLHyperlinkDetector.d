@@ -29,9 +29,9 @@ import org.eclipse.jface.text.hyperlink.IHyperlink; // packageimport
 import java.lang.all;
 import java.util.Set;
 
-import org.eclipse.dwtxhelper.MalformedURLException;
-import org.eclipse.dwtxhelper.URL;
-import org.eclipse.dwtxhelper.StringTokenizer;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.StringTokenizer;
 
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;

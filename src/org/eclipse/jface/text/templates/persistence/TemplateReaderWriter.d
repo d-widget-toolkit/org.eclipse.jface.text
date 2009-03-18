@@ -18,6 +18,8 @@ import org.eclipse.jface.text.templates.persistence.TemplateStore; // packageimp
 
 
 import java.lang.all;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Set;

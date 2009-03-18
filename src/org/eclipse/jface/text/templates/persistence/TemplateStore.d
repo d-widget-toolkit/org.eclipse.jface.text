@@ -17,12 +17,13 @@ import org.eclipse.jface.text.templates.persistence.TemplateReaderWriter; // pac
 import org.eclipse.jface.text.templates.persistence.TemplatePersistenceMessages; // packageimport
 
 import java.lang.all;
+import java.io.Reader;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
-import org.eclipse.dwtxhelper.StringWriter;
-import org.eclipse.dwtxhelper.StringReader;
+import java.io.StringWriter;
+import java.io.StringReader;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.preference.IPersistentPreferenceStore;

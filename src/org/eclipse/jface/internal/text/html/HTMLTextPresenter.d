@@ -23,9 +23,10 @@ import org.eclipse.jface.internal.text.html.HTMLMessages; // packageimport
 
 
 import java.lang.all;
+import java.io.Reader;
 import java.util.Iterator;
 import java.util.Set;
-import org.eclipse.dwtxhelper.StringReader;
+import java.io.StringReader;
 
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.graphics.Drawable;
@@ -216,8 +217,7 @@ public class HTMLTextPresenter : DefaultInformationControl_IInformationPresenter
         while (start < end && Character.isWhitespace(buffer.slice().getRelativeCodePoint(start, 0)))
             start += buffer.slice().getRelativeCodePointOffset( start, 1 );
 
-        buffer.select(0, start);
-        buffer.remove();
+        buffer.delete_(0, start);
         presentation.setResultWindow(new Region(start, buffer.length()));
         return buffer.toString();
     }

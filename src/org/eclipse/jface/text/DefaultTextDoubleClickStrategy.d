@@ -158,9 +158,9 @@ import org.eclipse.jface.text.ITypedRegion; // packageimport
 import java.lang.all;
 import java.util.Set;
 
-import org.eclipse.dwtxhelper.CharacterIterator;
+import java.text.CharacterIterator;
 
-import org.eclipse.dwtxhelper.mangoicu.UBreakIterator;
+import java.mangoicu.UBreakIterator;
 
 /**
  * Standard implementation of

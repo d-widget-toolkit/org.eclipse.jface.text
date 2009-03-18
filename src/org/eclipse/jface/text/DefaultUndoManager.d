@@ -456,9 +456,9 @@ public class DefaultUndoManager : IUndoManager, IUndoManagerExtension {
 
         protected void updateCommand() {
             fText= fTextBuffer.toString();
-            fTextBuffer.truncate(0);
+            fTextBuffer.setLength(0);
             fPreservedText= fPreservedTextBuffer.toString();
-            fPreservedTextBuffer.truncate(0);
+            fPreservedTextBuffer.setLength(0);
         }
 
         /**
@@ -1252,8 +1252,7 @@ public class DefaultUndoManager : IUndoManager, IUndoManagerExtension {
                         // repeated backspace
 
                             // insert in buffer and extend command range
-                        fPreservedTextBuffer.select(0, 0);
-                        fPreservedTextBuffer.replace(replacedText);
+                        fPreservedTextBuffer.insert(0, replacedText);
                         fCurrent.fStart= modelStart;
 
                     } else {
@@ -1394,8 +1393,8 @@ public class DefaultUndoManager : IUndoManager, IUndoManagerExtension {
             fCurrent= null;
             fTextViewer= null;
             disposeCommandStack();
-            fTextBuffer.clear();
-            fPreservedTextBuffer.clear();
+            fTextBuffer= null;
+            fPreservedTextBuffer= null;
             fUndoContext= null;
         }
     }
@@ -1410,8 +1409,8 @@ public class DefaultUndoManager : IUndoManager, IUndoManagerExtension {
             fFoldingIntoCompoundChange= false;
             fInserting= false;
             fOverwriting= false;
-            fTextBuffer.truncate(0);
-            fPreservedTextBuffer.truncate(0);
+            fTextBuffer.setLength(0);
+            fPreservedTextBuffer.setLength(0);
             fPreservedUndoModificationStamp= IDocumentExtension4.UNKNOWN_MODIFICATION_STAMP;
             fPreservedRedoModificationStamp= IDocumentExtension4.UNKNOWN_MODIFICATION_STAMP;
         }

@@ -63,8 +63,6 @@ class BrowserInformationControl : AbstractInformationControl , IInformationContr
 // FIXME needs Browser :/
 /++
 
-import org.eclipse.dwtxhelper.StringReader;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
