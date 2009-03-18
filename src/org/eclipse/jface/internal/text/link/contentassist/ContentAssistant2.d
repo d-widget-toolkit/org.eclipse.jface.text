@@ -30,7 +30,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
-import java.lang.JThread;
+import java.lang.Thread;
 import tango.core.sync.Mutex;
 import tango.core.sync.Condition;
 
@@ -238,7 +238,7 @@ public class ContentAssistant2 : IContentAssistant, IContentAssistantExtension, 
      */
     class AutoAssistListener : VerifyKeyListener, Runnable {
 
-        private JThread fThread;
+        private Thread fThread;
         private bool fIsReset= false;
         private Mutex     fMutex;
         private Condition fMutex_cond;
@@ -254,7 +254,7 @@ public class ContentAssistant2 : IContentAssistant, IContentAssistantExtension, 
 
         protected void start(int showStyle) {
             fShowStyle= showStyle;
-            fThread= new JThread(this);
+            fThread= new Thread(this);
             fThread.setName( ContentAssistMessages.getString("ContentAssistant.assist_delay_timer_name")); //$NON-NLS-1$
             fThread.start();
         }
@@ -287,7 +287,7 @@ public class ContentAssistant2 : IContentAssistant, IContentAssistantExtension, 
         }
 
         protected void stop() {
-            JThread threadToStop= fThread;
+            Thread threadToStop= fThread;
             if (threadToStop !is null)
                 threadToStop.interrupt();
         }

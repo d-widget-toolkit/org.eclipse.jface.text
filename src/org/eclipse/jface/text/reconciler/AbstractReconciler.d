@@ -28,7 +28,7 @@ import org.eclipse.jface.text.reconciler.IReconcilerExtension; // packageimport
 
 import java.lang.all;
 import java.util.Set;
-import java.lang.JThread;
+import java.lang.Thread;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -70,7 +70,7 @@ abstract public class AbstractReconciler : IReconciler {
      * Background thread for the reconciling activity.
      */
     class BackgroundThread {
-        JThread thread;
+        Thread thread;
 
         /** Has the reconciler been canceled. */
         private bool fCanceled= false;
@@ -88,9 +88,9 @@ abstract public class AbstractReconciler : IReconciler {
          * @param name the thread's name
          */
         public this(String name) {
-            thread = new JThread( &run );
+            thread = new Thread( &run );
             thread.setName( name );
-            thread.setPriority( JThread.MIN_PRIORITY );
+            thread.setPriority( Thread.MIN_PRIORITY );
             thread.setDaemon(true);
         }
 
@@ -100,7 +100,7 @@ abstract public class AbstractReconciler : IReconciler {
         public bool isAlive(){
             return thread.isAlive();
         }
-        public JThread getThread(){
+        public Thread getThread(){
             return thread;
         }
         /**
@@ -266,7 +266,7 @@ abstract public class AbstractReconciler : IReconciler {
         public void documentChanged(DocumentEvent e) {
 
             if (!fThread.isDirty() && fThread.isAlive()) {
-                if (!fIsAllowedToModifyDocument && JThread.currentThread() is fThread.getThread())
+                if (!fIsAllowedToModifyDocument && Thread.currentThread() is fThread.getThread())
                     throw new UnsupportedOperationException("The reconciler thread is not allowed to modify the document"); //$NON-NLS-1$
                 aboutToBeReconciled();
             }
@@ -631,6 +631,6 @@ abstract public class AbstractReconciler : IReconciler {
      * @since 3.4
      */
     protected bool isRunningInReconcilerThread() {
-        return JThread.currentThread() is fThread.getThread();
+        return Thread.currentThread() is fThread.getThread();
     }
 }

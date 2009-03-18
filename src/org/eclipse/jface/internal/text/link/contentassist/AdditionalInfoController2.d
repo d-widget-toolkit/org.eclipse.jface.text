@@ -26,7 +26,7 @@ import org.eclipse.jface.internal.text.link.contentassist.ContentAssistant2; // 
 
 import java.lang.all;
 import java.util.Set;
-import java.lang.JThread;
+import java.lang.Thread;
 import tango.core.sync.Mutex;
 import tango.core.sync.Condition;
 
@@ -75,7 +75,7 @@ class AdditionalInfoController2 : AbstractInformationControlManager , Runnable {
     /** The proposal table */
     private Table fProposalTable;
     /** The thread controlling the delayed display of the additional info */
-    private JThread fThread;
+    private Thread fThread;
     /** Indicates whether the display delay has been reset */
     private bool fIsReset= false;
     /** Object to synchronize display thread and table selection changes */
@@ -127,7 +127,7 @@ class AdditionalInfoController2 : AbstractInformationControlManager , Runnable {
         synchronized (fThreadAccess) {
             if (fThread !is null)
                 fThread.interrupt();
-            fThread= new JThread(this, ContentAssistMessages.getString("InfoPopup.info_delay_timer_name")); //$NON-NLS-1$
+            fThread= new Thread(this, ContentAssistMessages.getString("InfoPopup.info_delay_timer_name")); //$NON-NLS-1$
 
             fStartSignal= new Mutex();
             fStartSignal_cond= new Condition(fStartSignal);
@@ -206,7 +206,7 @@ class AdditionalInfoController2 : AbstractInformationControlManager , Runnable {
 
         synchronized (fThreadAccess) {
             // only null fThread if it is us!
-            if (JThread.currentThread() is fThread)
+            if (Thread.currentThread() is fThread)
                 fThread= null;
         }
     }

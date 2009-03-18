@@ -156,7 +156,6 @@ import java.lang.all;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
-import tango.core.Exception;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;

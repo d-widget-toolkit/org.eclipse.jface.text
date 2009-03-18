@@ -46,7 +46,7 @@ import org.eclipse.jface.text.contentassist.JFaceTextMessages; // packageimport
 
 import java.lang.all;
 import java.util.Set;
-import java.lang.JThread;
+import java.lang.Thread;
 import tango.core.sync.Mutex;
 import tango.core.sync.Condition;
 
@@ -285,7 +285,7 @@ class AdditionalInfoController : AbstractInformationControlManager {
         }
 
         /** The timer thread. */
-        private const JThread fThread;
+        private const Thread fThread;
 
         /** The currently waiting / active task. */
         private Task fTask;
@@ -321,7 +321,7 @@ class AdditionalInfoController : AbstractInformationControlManager {
             long current= System.currentTimeMillis();
             schedule(IDLE, current);
 
-            fThread= new JThread( &threadrun );
+            fThread= new Thread( &threadrun );
             fThread.setName( JFaceTextMessages.getString("InfoPopup.info_delay_timer_name")); //$NON-NLS-1$
             fThread.start();
         }

@@ -155,7 +155,7 @@ import org.eclipse.jface.text.ITypedRegion; // packageimport
 
 import java.lang.all;
 import java.util.Set;
-import java.lang.JThread;
+import java.lang.Thread;
 
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.MouseEvent;
@@ -193,7 +193,7 @@ class TextViewerHoverManager : AbstractHoverInformationControlManager , IWidgetT
     /** The text viewer */
     private TextViewer fTextViewer;
     /** The hover information computation thread */
-    private JThread fThread;
+    private Thread fThread;
     /** The stopper of the computation thread */
     private ITextListener fStopper;
     /** Internal monitor */
@@ -301,7 +301,7 @@ implMissing(__FILE__,__LINE__);
             setInformation(cast(Object)null, null);
             return;
         }
-        fThread= new JThread( dgRunnable( (ITextHover hover_, IRegion region_, Rectangle area_){
+        fThread= new Thread( dgRunnable( (ITextHover hover_, IRegion region_, Rectangle area_){
             // http://bugs.eclipse.org/bugs/show_bug.cgi?id=17693
             bool hasFinished= false;
             try {
@@ -352,7 +352,7 @@ implMissing(__FILE__,__LINE__);
         fThread.setName( "Text Viewer Hover Presenter" ); //$NON-NLS-1$
 
         fThread.setDaemon(true);
-        fThread.setPriority(JThread.MIN_PRIORITY);
+        fThread.setPriority(Thread.MIN_PRIORITY);
         synchronized (fMutex) {
             fTextViewer.addTextListener(fStopper);
             fThread.start();

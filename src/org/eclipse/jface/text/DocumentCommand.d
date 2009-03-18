@@ -30,7 +30,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
-import tango.core.Exception;
 
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.core.runtime.Assert;

@@ -31,7 +31,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
-import java.lang.JThread;
+import java.lang.Thread;
 
 
 
@@ -60,14 +60,14 @@ class ProjectionSummary {
 
     private class Summarizer {
 
-        JThread thread;
+        Thread thread;
         private bool fReset= true;
 
         /**
          * Creates a new thread.
          */
         public this() {
-            thread = new JThread( &run );
+            thread = new Thread( &run );
             fProgressMonitor= new NullProgressMonitor(); // might be given by client in the future
             thread.setDaemon(true);
             thread.start();

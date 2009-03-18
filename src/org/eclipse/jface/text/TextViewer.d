@@ -162,7 +162,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.regex.PatternSyntaxException;
-import java.lang.JThread;
+import java.lang.Thread;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.LineBackgroundEvent;
@@ -4349,7 +4349,7 @@ public class TextViewer : Viewer ,
                 styledTextPrinter.run();
                 printer.dispose();
             }
-            JThread printingThread= new JThread( &threadrun );
+            Thread printingThread= new Thread( &threadrun );
             printingThread.setName( "Printing" ); //$NON-NLS-1$
             printingThread.start();
         }
