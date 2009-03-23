@@ -125,6 +125,9 @@ public class DocumentCommand {
             // the answer
             return 42;
         }
+        public final override int opCmp( Object object ){
+            return compareTo( object );
+        }
 
         private bool isEqual(Object object) {
             if (object is this)

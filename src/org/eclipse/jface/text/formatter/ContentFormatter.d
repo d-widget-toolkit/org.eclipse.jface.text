@@ -197,6 +197,9 @@ public class ContentFormatter : IContentFormatter {
 
             throw new ClassCastException();
         }
+        public final override int opCmp( Object object ){
+            return compareTo( object );
+        }
     }
 
     /**
