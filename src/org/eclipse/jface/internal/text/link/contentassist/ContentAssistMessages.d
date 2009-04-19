@@ -25,9 +25,10 @@ import org.eclipse.jface.internal.text.link.contentassist.AdditionalInfoControll
 
 import java.lang.all;
 
-import java.util.ResourceBundle;
 import java.util.MissingResourceException;
-import java.text.MessageFormat;
+import java.util.ResourceBundle;
+
+import com.ibm.icu.text.MessageFormat;
 
 
 /**

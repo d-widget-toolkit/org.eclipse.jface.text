@@ -29,12 +29,11 @@ import org.eclipse.jface.text.hyperlink.IHyperlink; // packageimport
 import java.lang.all;
 import java.text.MessageFormat;
 
-import org.eclipse.swt.program.Program;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.text.IRegion;
+import org.eclipse.swt.program.Program;
 
-
-
+import com.ibm.icu.text.MessageFormat;
 
 
 /**

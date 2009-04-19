@@ -160,19 +160,19 @@ import java.util.Set;
 
 import java.text.CharacterIterator;
 
-import java.mangoicu.UBreakIterator;
+import com.ibm.icu.text.BreakIterator;
 
 /**
  * Standard implementation of
  * {@link org.eclipse.jface.text.ITextDoubleClickStrategy}.
  * <p>
- * Selects words using <code>java.text.UBreakIterator</code> for the default
+ * Selects words using <code>java.text.BreakIterator</code> for the default
  * locale.</p>
  * <p>
  * This class is not intended to be subclassed.
  * </p>
  *
- * @see java.text.UBreakIterator
+ * @see java.text.BreakIterator
  * @noextend This class is not intended to be subclassed by clients.
  */
 public class DefaultTextDoubleClickStrategy : ITextDoubleClickStrategy {
@@ -342,19 +342,17 @@ public class DefaultTextDoubleClickStrategy : ITextDoubleClickStrategy {
             if (position is line.getOffset() + line.getLength())
                 return;
 
-            //mangoicu
-//             fDocIter.setDocument(document, line);
-            String strLine = document.get( line.getOffset(), line.getLength() );
-            UBreakIterator breakIter= UBreakIterator.openWordIterator( ULocale.Default, strLine/+fDocIter+/ );
+            fDocIter.setDocument(document, line);
 
+            BreakIterator breakIter= BreakIterator.getWordInstance();
+            breakIter.setText(fDocIter);
 
-            //int start= breakIter.preceding(position);
-            int start= breakIter.previous(position); // mangoicu
-            if (start is UBreakIterator.DONE)
+            int start= breakIter.preceding(position);
+            if (start is BreakIterator.DONE)
                 start= line.getOffset();
 
             int end= breakIter.following(position);
-            if (end is UBreakIterator.DONE)
+            if (end is BreakIterator.DONE)
                 end= line.getOffset() + line.getLength();
 
             if (breakIter.isBoundary(position)) {

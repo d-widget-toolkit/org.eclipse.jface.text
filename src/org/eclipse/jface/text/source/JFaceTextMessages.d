@@ -16,9 +16,10 @@ module org.eclipse.jface.text.source.JFaceTextMessages;
 
 import java.lang.all;
 
-import java.util.ResourceBundle;
 import java.util.MissingResourceException;
-import java.text.MessageFormat;
+import java.util.ResourceBundle;
+
+import com.ibm.icu.text.MessageFormat;
 
 /**
  * Accessor for the <code>JFaceTextMessages.properties</code> file in

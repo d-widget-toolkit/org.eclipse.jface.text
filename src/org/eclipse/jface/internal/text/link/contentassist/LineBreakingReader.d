@@ -27,9 +27,10 @@ import java.lang.all;
 import java.io.Reader;
 import java.util.Set;
 import java.io.BufferedReader;
-import java.mangoicu.UBreakIterator;
 
 import org.eclipse.swt.graphics.GC;
+
+import com.ibm.icu.text.BreakIterator;
 
 /*
  * Not a real reader. Could change if requested
@@ -43,7 +44,7 @@ public class LineBreakingReader {
     private String fLine;
     private int fOffset;
 
-    private UBreakIterator fLineBreakIterator;
+    private BreakIterator fLineBreakIterator;
     private bool fBreakWords;
 
     /**
@@ -59,7 +60,7 @@ public class LineBreakingReader {
         fMaxWidth= maxLineWidth;
         fOffset= 0;
         fLine= null;
-        fLineBreakIterator= UBreakIterator.openLineIterator( ULocale.Default);
+        fLineBreakIterator= BreakIterator.getLineInstance();
         fBreakWords= true;
     }
 
@@ -90,7 +91,7 @@ public class LineBreakingReader {
         }
         int breakOffset= findNextBreakOffset(fOffset);
         String res;
-        if (breakOffset !is UBreakIterator.DONE) {
+        if (breakOffset !is BreakIterator.DONE) {
             res= fLine.substring(fOffset, breakOffset);
             fOffset= findWordBegin(breakOffset);
             if (fOffset is fLine.length()) {
@@ -106,7 +107,7 @@ public class LineBreakingReader {
     private int findNextBreakOffset(int currOffset) {
         int currWidth= 0;
         int nextOffset= fLineBreakIterator.following(currOffset);
-        while (nextOffset !is UBreakIterator.DONE) {
+        while (nextOffset !is BreakIterator.DONE) {
             String word= fLine.substring(currOffset, nextOffset);
             int wordWidth= fGC.textExtent(word).x;
             int nextWidth= wordWidth + currWidth;
