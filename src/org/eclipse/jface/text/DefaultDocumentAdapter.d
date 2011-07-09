@@ -579,7 +579,7 @@ class DefaultDocumentAdapter : IDocumentAdapter, IDocumentListener, IDocumentAda
         if( offset >= fDocument.getLength() ){
             return offset;
         }
-        while( fDocument.getChar(offset) & 0xC0 is 0x80 && offset > 0 ){
+        while( !isUTF8sequenceStart(fDocument.getChar(offset)) && offset > 0 ){
             offset--;
         }
         return offset;
